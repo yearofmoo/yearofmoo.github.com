@@ -10,8 +10,22 @@ html, body, textarea, input, option, select, pre, code, th {
   margin:0 auto;
 }
 
+.email {
+  margin-bottom:40px;
+  font-size:1.2em;
+	color:#cca300;
+}
+
 #stage {
   margin-bottom:50px;
+}
+
+.btn-header {
+  text-align:center;
+  font-size:40px;
+  vertical-align:middle;
+  margin-right:10px;
+  margin-bottom:20px;
 }
 
 .btn {
