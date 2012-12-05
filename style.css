@@ -3,7 +3,30 @@ html, body, textarea, input, option, select, pre, code, th {
   font-size:12px;
 }
 
+body {
+  position:relative;
+}
+
+body:after {
+  position:absolute;
+  top:0;
+  right:0;
+  z-index:100;
+  left:0;
+  height:300px;
+  content:"";
+background: -moz-linear-gradient(top,  rgba(221,221,221,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(221,221,221,0.65)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(221,221,221,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(221,221,221,0.65) 0%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(221,221,221,0.65) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(221,221,221,0.65) 0%,rgba(0,0,0,0) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6dddddd', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+}
+
 #wrapper {
+  position:relative;
+  z-index:1000;
   padding-top:50px;
   width:960px;
   text-align:center;
