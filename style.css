@@ -1,0 +1,52 @@
+html, body, textarea, input, option, select, pre, code, th {
+  font-family:verdana;
+  font-size:12px;
+}
+
+#wrapper {
+  padding-top:50px;
+  width:960px;
+  text-align:center;
+  margin:0 auto;
+}
+
+#stage {
+  margin-bottom:50px;
+}
+
+.btn {
+  background:#111 url(background.png) repeat-x top left;
+  padding:8px 15px;
+  display:inline-block;
+  border-radius:10px;
+  text-decoration:none;
+  text-align:center;
+  color:#eee;
+  box-shadow:0 0 10px #111;
+  -webkit-box-shadow:0 0 10px #111;
+  -moz-box-shadow:0 0 10px #111;
+  font-size:15px;
+}
+
+.btn-icon {
+  vertical-align:bottom;
+}
+
+.btn-inner {
+  font-size:1.2em;
+  vertical-align:top;
+}
+
+.btn-icon {
+  margin-right:5px;
+  color:#00C0F7;
+}
+
+.btn + .btn {
+  margin-left:1em;
+}
+
+.btn, a.btn, a.btn:link, a.btn:visited, a.btn:active {
+  text-decoration:none;
+  color:white;
+}
