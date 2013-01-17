@@ -1,0 +1,3 @@
+- path: articles/YOM-AngularJS-Testing-Article
+  repo: git://github.com/yearofmoo/YOM-AngularJS-Testing-Article.git
+  keep: false
