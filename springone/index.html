@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Introduction to AngularJS</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css">
+    <link rel="stylesheet" href="css/reveal.fullscreen.css">
+    <link rel="stylesheet" href="css/overrides.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body id="body">
+		<div class="reveal">
+
+			<div class="slides">
+        <section fullscreen-img="/images/first-slide.svg">
+				</section>
+
+				<section>
+					<h2 class="em">@yearofmoo</h2>
+          <div id="logo"></div>
+          <p>
+            <a class="em2" target="_blank" href="http://www.yearofmoo.com">http://www.yearofmoo.com</a>
+          </p>
+					<p>
+            Seven major AngularJS articles.
+					</p>
+
+					<p>
+            Great resource to learn about <span class="em3">AngularJS</span>.
+					</p>
+
+					<aside class="notes">
+						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+					</aside>
+				</section>
+
+				<section>
+					<h2 class="em">Link to Slides</h2>
+          <p>
+            <a target="_blank" href="http://yom.nu/ngsp1" target="_blank">yom.nu/ngsp</a>
+          </p>
+				</section>
+
+        <section>
+          <h2 class="em">When dealing with Web Applications</h2>
+          <p class="fragment fade-in">
+            What's the problem?
+          </p>
+          <p class="fragment fade-in">
+            HTML and JavaScript are too coupled together
+          </p>
+          <p class="fragment fade-in">
+            Too much of a mix between AJAX and traditional HTTP page refreshes
+          </p>
+          <p class="fragment fade-in">
+            Too dependent on how the backend works
+          </p>
+          <p class="fragment fade-in">
+            Testing usually becomes secondary
+          </p>
+          <p class="fragment fade-in">
+            Code is too brittle
+          </p>
+          <p class="fragment fade-in">
+            Too much work overall
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">MVC-style Frameworks Help Out</h2>
+          <p class="fragment fade-in">
+            MVC frameworks are a great approach to this
+          </p>
+          <p class="fragment fade-in">
+            Smaller amounts of HTML &amp; JavaScript code required
+          </p>
+          <p class="fragment fade-in">
+            Provide some level of testing and organization
+          </p>
+          <p class="fragment fade-in">
+            Backend-agnostic HTML code
+          </p>
+          <p class="fragment fade-in">
+            AngularJS does this and more...
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">AngularJS</h2>
+          <div>
+            <img src="/images/angularjs-logo.png" width="200" height="200" style="border-radius:10px; background:white; padding:10px;" />
+            <p class="fragment fade-in">
+              Powerful Front-end JavaScript MVC Framework
+            </p>
+            <p class="fragment fade-in">
+              Extends HTML to build complex web applications 
+            </p>
+            <p class="fragment fade-in">
+              Organizes JavaScript code into reusable modules
+            </p>
+            <p class="fragment fade-in">
+              Uses routes and views to structure your application
+            </p>
+            <p class="fragment fade-in">
+              Dependency-injected code allows for easy testing
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="em">The major features of AngularJS</h2>
+          <p class="fragment fade-in">
+            Dynamic templating using standard HTML tags and data bindings
+          </p>
+          <p class="fragment fade-in">
+            Modular JavaScript code
+          </p>
+          <p class="fragment fade-in">
+            Dependency injection (services and factories)
+          </p>
+          <p class="fragment fade-in">
+            Controllers and URL Routing
+          </p>
+          <p class="fragment fade-in">
+            Multi-level data scoping
+          </p>
+          <p class="fragment fade-in">
+            Animation hooks
+          </p>
+        </section>
+				
+        <section>
+          <section>
+            <h2 class="em">Some examples</h2>
+          </section>
+
+          <section>
+            <h2 class="em">Getting Started</h2>
+            <p class="fragment fade-in">
+              Setup a basic HTML index.html file
+            </p>
+            <pre class="big-code fragment fade-in"><code data-trim>
+&lt;html ng-app&gt;
+  &lt;body&gt;
+    <div ng-init="myName='Matias'">
+      Hello {{ myName }}
+    </div>
+    &lt;script type="text/javascript" src="angular.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+            </code></pre>
+          </section>
+
+          <section>
+            <h2 class="em">Basic Interactivity</h2>
+            <pre class="big-code fragment fade-in"><code data-trim>
+&lt;html ng-app="myApp"&gt;
+  &lt;body&gt;
+    &lt;div ng-controller="AppCtrl"&gt;
+      &lt;input type="text" ng-model="myName" /&gt;
+      Hello {{ myName }}
+    &lt;/div&gt;
+    &lt;script type="text/javascript" src="angular.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      var app = angular.module('myApp', [])
+      app.controller('AppCtrl', function($scope) {
+        $scope.myName = '...';
+      });
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2 class="em">Modules (HTML)</h2>
+            <p class="fragment fade-in">
+              All AngularJS JavaScript code is stored in modules
+            </p>
+            <pre class="big-code fragment fade-in"><code>
+  var app = angular.module('superModule', ['otherModule', 'anotherModule']);
+            </code></pre>
+
+            <p class="fragment fade-in">
+              And a module is attached to a page
+            </p>
+
+            <pre class="big-code fragment fade-in"><code style="text-align:center">
+  &lt;html ng-app="superModule"&gt; ... &lt;/html&gt;
+            </code></pre>
+          </section>
+
+          <section>
+            <h2 class="em">Modules (JavaScript)</h2>
+            <p class="fragment fade-in">
+              Modules are used to define services, controllers, directives and filters
+            </p>
+
+            <p class="fragment fade-in">
+              Each module member is a constructor which can inject other services
+            </p>
+
+            <pre class="big-code fragment fade-in"><code data-trim>
+app.factory('myValues', function() {
+  return function() {
+    return [1,2,3,4,5,6];
+  };
+});
+app.filter('skipFirstValue', function() {
+  return function(data) {
+    return data.slice(1);
+  }
+});
+app.run(function($rootScope, myValues, skipFirstValueFilter) {
+  //this is called when the page is loaded
+  $rootScope.values = skipFirstValue(myValues());
+});
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2 class="em">$scope</h2>
+            <p class="fragment fade-in">
+              The scope is the glue between JavaScript and HTML in AngularJS 
+            </p>
+
+            <pre class="big-code fragment fade-in"><code data-trim>
+app.controller('AppCtrl', function($scope) {
+  $scope.totalApples = 0;
+  $scope.moreApples = function() {
+    $scope.totalApples++;
+  }
+});
+            </code></pre>
+
+            <p class="fragment fade-in">
+              Anything placed on the <span class="em2">$scope</span> object can be referenced in <span class="em2">HTML</span>
+            </p>
+
+            <pre class="big-code fragment fade-in"><code data-trim>
+<div ng-controller="AppCtrl">
+  Hello, so far I have <strong>{{ totalApples }}</strong> apples.
+  <button ng-click="moreApples()">Give me more!</button>
+</diV>
+            </code></pre>
+
+            <p class="fragment fade-in">
+              Think of the scope as the memory for your HTML
+            </p>
+
+          </section>
+
+          <section>
+            <h2 class="em">$rootScope and nested scopes</h2>
+            <p class="fragment fade-in">
+              $rootScope is the base scope of all scopes
+            </p>
+
+            <p class="fragment fade-in">
+              A child scope is a new container within a scope
+            </p>
+
+            <p class="fragment fade-in">
+              AngularJS may create additional child scopes to isolate data
+              within a template
+            </p>
+
+            <pre class="big-code fragment fade-in"><code data-trim>
+&lt;div ng-controller="AppCtrl as outer"&gt;
+  &lt;div ng-controller="InnerCtrl as inner" ng-init="value='1'"&gt;
+    {{ inner.value }}
+  &lt;/div&gt;
+  &lt;div ng-controller="InnerCtrl as inner" ng-init="value='2'"&gt;
+    {{ inner.value }}
+  &lt;/div&gt;
+&lt;/div&gt;
+            </code></pre>
+          </section>
+
+        </section>
+
+        <section>
+          <section>
+            <h2 class="em">Controllers and Templates</h2>
+            <p class="fragment fade-in">
+              Controllers are defined inside of a module like all other services
+            </p>
+
+            <pre class="big-code fragment fade-in"><code style="text-align:center">
+app.controller('AppCtrl', function($scope) { ... });
+            </code></pre>
+
+            <p class="fragment fade-in">
+              And they can be referenced in HTML using <span class="em2">ng-controller</span>. 
+            </p>
+
+            <p class="fragment fade-in">
+              Or within routes...
+            </p>
+
+          </section>
+
+          <section>
+            <h2 class="em">Controllers &amp; Routing (JavaScript)</h2>
+            <p class="fragment fade-in">
+              Routes are enabled when <span class="em2">ngRoute</span> is set as a dependency
+            </p>
+
+            <p class="fragment fade-in">
+              And then <span class="em2">$routeProvider</span> is used to define the routing
+            </p>
+
+            <pre class="big-code fragment fade-in"><code data-trim>
+var app = angular.module('myApp', ['ngRoute']);
+app.config(function($routeProvider) {
+  $routeProvider.when('/home', {
+    controller : 'HomeCtrl',
+    templateUrl : 'home.html'
+  });
+  $routeProvider.when('/contact', {
+    controller : 'ContactCtrl',
+    templateUrl : 'contact.html'
+  });
+});
+app.controller('HomeCtrl', function() { });
+app.controller('ContactCtrl', function() { });
+            </code></pre>
+          </section>
+
+          <section>
+            <h2 class="em">Controllers &amp; Routing (HTML)</h2>
+
+            <p class="fragment fade-in">
+              To display views, use the <span class="em2">ng-view</span> element
+            </p>
+
+            <pre class="big-code fragment fade-in"><code data-trim>
+&lt;html ng-app="myApp"&gt;
+  &lt;body&gt;
+    &lt;div ng-view&gt;&lt;/div&gt;
+    &lt;script type="text/javascript" src="angular.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+            </code></pre>
+
+            <p class="fragment fade-in">
+              Place this in your <span class="em2">index.html</span> file
+            </p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2 class="em">Dynamic Templates</h2>
+
+            <p class="fragment fade-in">
+              AngularJS provides series of predefined HTML components
+            </p>
+
+            <p class="fragment fade-in">
+              These components reduce much of the JavaScript required to make HTML appear dynamic 
+            </p>
+          </section>
+
+          <section>
+            <h2 class="em">ngRepeat</h2>
+
+            <p class="fragment fade-in">
+              ngRepeat renders a list of items from a scope member
+            </p>
+
+            <pre class="big-code fragment fade-in"><code data-trim>
+var app = angular.module('myApp', []);
+app.controller('ColorsCtrl', function($scope) {
+  $scope.colors = 'red,green,blue,orange,yellow,purple,gray'.split(',');
+  $scope.tooManyColors = function() {
+    return $scope.colors.length >= 5;
+  };
+});
+            </code></pre>
+
+            <pre class="big-code fragment fade-in"><code data-trim>
+&lt;div ng-controller="ColorsCtrl"&gt;
+  <div ng-if="tooManyColors()">
+    This application has too many colors! 
+  </div>
+  &lt;div ng-repeat="color in colors"&gt;
+    {{ color }}
+  &lt;/div&gt;
+&lt;/div&gt;
+            </code></pre>
+
+          </section>
+
+          <section>
+            <h2 class="em">ngInclude</h2>
+
+            <p class="fragment fade-in">
+              <span class="em2">ngInclude</span> works to render content like ngView does
+            </p>
+
+            <pre class="big-code fragment fade-in"><code data-trim>
+&lt;div ng-controller="AppCtrl as app"&gt;
+  &lt;select ng-model="app.templateValue"&gt;
+    &lt;option value="'frame1.html'"&gt;Frame 1&lt;/option&gt;
+    &lt;option value="'frame2.html'"&gt;Frame 2&lt;/option&gt;
+  &lt;/select&gt;
+  &lt;div ng-include="app.templateValue"&gt;&lt;/div&gt;
+&lt;/div&gt;
+            </code></pre>
+          </section>
+
+          <section>
+            <h2 class="em">ngShow / ngHide</h2>
+
+            <p class="fragment fade-in">
+              <span class="em2">ngShow</span> and <span class="em2">ngHide</span> show and hide an element on screen
+            </p>
+
+            <pre class="big-code fragment fade-in"><code data-trim>
+&lt;div ng-controller="AppCtrl as app"&gt;
+  &lt;button ng-click="app.showMe=true"&gt;
+    Show
+  &lt;/em&gt;
+  &lt;button ng-click="app.showMe=false"&gt;
+    Hide
+  &lt;/em&gt;
+  &lt;div ng-show="app.showMe"&gt;
+    I am visible...
+  &lt;/div&gt;
+&lt;/div&gt;
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2 class="em">AJAX using $http</h2>
+
+            <p class="fragment fade-in">
+              Use <span class="em2">$http</span> to perform an AJAX request 
+            </p>
+
+            <pre class="big-code fragment fade-in"><code data-trim>
+var app = angular.module('myApp', []);
+app.controller('ColorsCtrl', function($scope, $http) {
+  $scope.colors = $http.get('/api/colors.json');
+});
+            </code></pre>
+
+            <p class="fragment fade-in">
+              The scope will automatically update itself when <span class="em2">$http</span> returns gets a response
+            </p>
+          </section>
+
+          <section>
+            <h2 class="em">AJAX using $resource</h2>
+
+            <p class="fragment fade-in">
+              Use <span class="em2">$resource</span> to push and pull data from a RESTful API
+            </p>
+
+            <pre class="big-code fragment fade-in"><code data-trim>
+var app = angular.module('myApp', ['ngResource']);
+app.factory('Color', function($resource) {
+  return $resource('/api/colors', {
+    id : '@id'
+  }, {
+    find : { method : 'GET' },
+    query : { method : 'GET', isArray: true },
+    create : { method : 'POST' },
+    update : { method : 'PUT' },
+    destroy : { method : 'DELETE' }
+  });
+});
+app.controller('ColorsCtrl', function($scope, Color) {
+  $scope.colors = Color.query();
+});
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2 class="em">Directives</h2>
+
+            <p class="fragment fade-in">
+              Special custom components in HTML
+            </p>
+
+            <pre class="big-code fragment fade-in"><code style="text-align:center">
+&lt;div my-special-element&gt;&lt;/div&gt;
+            </code></pre>
+
+            <p class="fragment fade-in">
+              Which are then handled in JavaScript via DOM manipulation
+            </p>
+
+            <pre class="big-code fragment fade-in"><code data-trim>
+app.directive('mySpecialElement', function() {
+  return function($scope, element, attrs) {
+    element.bind('click', function() {
+      alert('clicked');    
+    });
+  }; 
+});
+            </code></pre>
+          </section>
+
+          <section>
+            <h2 class="em">Directives, $scope and Templates</h2>
+
+            <p class="fragment fade-in">
+              Something more advanced...
+            </p>
+
+            <pre class="big-code fragment fade-in"><code data-trim>
+app.directive('mySpecialElement', function() {
+  return {
+    scope : { times : 0 },
+    template : 'You have been clicked {{ times }}',
+    controller : function($scope) {
+      $scope.$on('clicked', function() {
+        $scope.times++;
+      });
+    },
+    link : function($scope, element, attrs) {
+      element.bind('click', function() {
+        $scope.$apply(function() {
+          $scope.$emit('clicked');
+        });
+      });
+    }
+  }
+});
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2 class="em">Unit Testing</h2>
+            <p class="fragment fade-in">
+              Unit testing is available via the <span class="em2">angular-mocks.js</span> file
+            </p>
+
+            <p class="fragment fade-in">
+              Both Jasmine and Mocha are supported
+            </p>
+
+            <pre class="big-code fragment fade-in"><code data-trim>
+describe('Test colors', function() {
+  it('should have a green color by default',
+    inject(function($rootScope, $controller) {
+      var ctrl = $controller('AppCtrl', {
+        $scope : $rootScope
+      });
+      expect(ctrl.colors.indexOf('green')).toBe(true);
+  }));
+});
+            </code></pre>
+          </section>
+
+          <section>
+            <h2 class="em">E2E Testing</h2>
+
+            <p class="fragment fade-in">
+              Supported currently by using <span class="em2">angular-scenario.js</span> and soon to be with <span class="em2">Protractor</em>. 
+            </p>
+
+            <p class="fragment fade-in">
+              Uses a working web URL and performs assertions using a Jasmine-style matcher system
+            </p>
+
+            <pre class="big-code fragment fade-in"><code data-trim>
+describe('Test Home Page', function() {
+  it('should have a welcome message on the home page', function() {
+    browser().navigateTo('#/home');
+    expect(browser().location().path()).toBe("/home");
+    expect(element('[ng-view]').html()).toContain('welcome to the home page!');
+  });
+});
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2 class="em">Animations</h2>
+
+            <p class="fragment fade-in">
+              Supported with the latest release of AngularJS (v1.2-rc2)
+            </p>
+
+            <p class="fragment fade-in">
+              Include the <span class="em2">ngAnimate</span> module as a dependency for your app module.
+            </p>
+
+            <pre class="big-code fragment fade-in"><code style="text-align:center">
+var app = angular.module('myApp', ['ngRoute', 'ngAnimate','ngResource']);
+            </code></pre>
+
+            <p class="fragment fade-in">
+              Animations work with ng-* directives automatically via CSS and/or JavaScript hooks
+            </p>
+          </section>
+
+          <section>
+            <h2 class="em">CSS-enabled Animations</h2>
+            <p class="fragment fade-in">
+              CSS3 Transitions + CSS3 Keyframe Animations are automatically triggered and rendered
+            </p>
+
+            <p class="fragment fade-in">
+              Just include a CSS class on the <span class="em2">ngView</em> element
+            </p> 
+
+            <pre class="big-code fragment fade-in"><code style="text-align:center">
+&lt;div ng-view class="my-view"&gt;&lt;/div&gt;
+            </code></pre>
+
+            <pre class="big-code fragment fade-in"><code data-trim>
+.my-view.ng-enter, .mv-view.ng-leave {
+  transition:1s linear all;
+}
+
+.my-view.ng-leave.ng-leave-active {
+.my-view.ng-enter {
+  opacity:0;
+}
+
+.my-view.ng-enter.ng-enter-active {
+.my-view.ng-leave {
+  opacity:1;
+}
+            </code></pre>
+          </section>
+
+          <section>
+            <h2 class="em">JavaScript-enabled Animations</h2>
+            <p class="fragment fade-in">
+              JavaScript callbacks are available for more advanced animations
+            </p>
+
+            <p class="fragment fade-in">
+              Include a CSS class just as before and map that to a JavaScript animation
+            </p> 
+
+            <pre class="big-code fragment fade-in"><code data-trim>
+app.animation('.my-view', function() {
+  return {
+    enter : function(element, done) {
+      jQuery(element).animate({
+        opacity:1
+      }, done);
+    },
+    leave : function(element, done) {
+      jQuery(element).animate({
+        opacity:0
+      }, done);
+    }
+  };
+});
+            </code></pre>
+          </section>
+
+        </section>
+
+        <section>
+          <h2 class="em">Demo Repo</h2>
+          <p class="fragment fade-in">
+            Here is a full-fledged demo of AngularJS with just about all the features from the presentation
+          </p>
+          <p class="fragment fade-in">
+            <a target="_blank" href="http://yom.nu/ngsp1" target="_blank">yom.nu/ngsp1</a>
+          </p>
+          <p class="fragment fade-in">
+            And the Github repo for that is located at:
+          </p>
+          <p class="fragment fade-in">
+            <a target="_blank" href="http://yom.nu/ngsp0" target="_blank">yom.nu/ngsp0</a>
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">Some things I missed</h2>
+          <p class="fragment fade-in">
+            The <span class="em2">$promise</span> API
+          </p>
+          <p class="fragment fade-in">
+            Form Validation
+          </p>
+          <p class="fragment fade-in">
+            <span class="em2">$scope</span> Events
+          </p>
+          <p class="fragment fade-in">
+            More about testing
+          </p>
+        </section>
+
+        <section>
+          <h2 class="em">Helpful Resources</h2>
+          <p class="fragment fade-in">
+            <a href="http://angularjs.org" class="em2" target="_blank">angularjs.org</a> - Docs + Guides
+          </p>
+          <p class="fragment fade-in">
+            <a href="http://egghead.io" class="em2" target="_blank">egghead.io</a> - The best AngularJS screencasts website
+          </p>
+          <p class="fragment fade-in">
+            <a href="https://github.com/jmcunningham/AngularJS-Learning" class="em2" target="_blank">
+              https://github.com/jmcunningham/AngularJS-Learning
+            </a> - A great list of helpful AngularJS resources
+          </p>
+          <p class="fragment fade-in">
+            <a href="http://www.yearofmoo.com" class="em2" target="_blank">yearofmoo.com</a> - Helpful articles on AngularJS (Testing and Animations)
+          </p>
+        </section>
+				
+        <section>
+          <h2 class="em">Thank you!</h2>
+          <p class="fragment fade-in">
+            Thank you for making this possible
+          </p>
+          <div id="slogo"></div>
+          <p class="fragment fade-in">
+					  <a href="https://twitter.com/yearofmoo" class="em" target="_blank">@yearofmoo</a>
+          </p>
+          <p class="fragment fade-in">
+            Feel free to contact me via <span class="em">matias@yearofmoo.com</span>
+          </p>
+        </section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+        width: 1280,
+        height: 700,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+          { src: 'js/reveal.fullscreen.js' },
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+		</script>
+
+	</body>
+</html>
