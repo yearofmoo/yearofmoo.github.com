@@ -1,0 +1,47 @@
+<script type="text/ng-template" id="nav-results">
+  <i class="nav-expand-search-icon icon-search"></i>
+  <input type="text" ng-model="$parent.q" class="nav-expand-search-field" />
+
+  <a href="{{ $parent.basePath }}/{{ result.$id }}"
+     ng-repeat="result in results | filter:q track by result.$id"
+     class="nav-list-result"
+     ng-class="isActive(result)">
+    {{ result.title }}
+  </a>
+</script>
+
+<h3 class="nav-heading" nav-expand="lists" ng-init="open=false; basePath='#/lists'">
+  <a href="" ng-click="open=!open">
+    <i ng-class="{'icon-right-open-mini':open==false, 'icon-down-open-mini':open}"></i>
+  </a>
+  <a href="#/lists/">Lists</a>
+
+  <a href="#/lists/new" class="nav-new-action"><i class="icon-list-add"></i></a>
+  <div class="nav-expand-contents" ng-show="open">
+    <div ng-include="'nav-results'"></div>
+  </div>
+</h3>
+
+<h3 class="nav-heading" nav-expand="grids" ng-init="open=false">
+  <a href="" ng-click="open=!open">
+    <i ng-class="{'icon-right-open-mini':open==false, 'icon-down-open-mini':open}"></i>
+  </a>
+  <a href="#/grids/">Grids</a>
+
+  <a href="#/grids/new" class="nav-new-action"><i class="icon-list-add"></i></a>
+  <div class="nav-expand-contents" ng-show="open">
+    <div ng-include="'nav-results'"></div>
+  </div>
+</h3>
+
+<h3 class="nav-heading" nav-expand="maps" ng-init="open=false; basePath='#/maps'">
+  <a href="" ng-click="open=!open">
+    <i ng-class="{'icon-right-open-mini':open==false, 'icon-down-open-mini':open}"></i>
+  </a>
+  <a href="#/maps/">Maps</a>
+
+  <a href="#/maps/new" class="nav-new-action"><i class="icon-list-add"></i></a>
+  <div class="nav-expand-contents" ng-show="open">
+    <div ng-include="'nav-results'"></div>
+  </div>
+</h3>

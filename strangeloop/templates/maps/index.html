@@ -1,0 +1,26 @@
+<header>
+  <h2>Collection of Maps</h2>
+</header>
+<div ng-if="!maps.length">
+  You currently have no maps. <a href="#/maps/new">Click here to create one</a>.
+</div>
+<div ng-if="maps.length > 0">
+  <div ng-repeat="map in maps track by map.$id" class="list-result">
+    <h2><a href="#/maps/{{ map.$id }}">{{ map.title }}</a></h2>
+    <div class="row">
+      <div class="four columns">
+        <h5>Description / Summary</h5>
+        {{ map.summary }}
+      </div>
+      <div class="four columns">
+        <h5>Keywords</h5>
+        {{ map.keywords }}
+      </div>
+    </div>
+    <nav>
+      <div class="btn info medium">
+        <a href="#/maps/{{ map.$id }}">View Map</a>
+      </div>
+    </nav>
+  </div>
+</div>

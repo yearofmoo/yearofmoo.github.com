@@ -1,0 +1,73 @@
+<div class="row">
+  <header class="eight columns">
+    <h2>{{ map.title }} <span>{{ map.keywords }}</span></h2>
+    <div class="row">
+      <div class="six columns">
+        <h5>Description / Summary</h5>
+        {{ map.summary }}
+      </div>
+      <div class="six columns">
+        <h5>Keywords</h5>
+        {{ map.keywords }}
+      </div>
+    </div>
+  </header>
+
+  <nav class="item-actions four columns">
+    <a href="#/maps/{{ map.$id }}/edit"><i class="icon-pencil"></i> Edit</a>
+    <a href="" ng-click="destroy()"><i class="icon-trash"></i> Delete</a>
+  </nav>
+</div>
+
+<div class="map-canvas" ng-controller="MapCanvasCtrl">
+  <form ng-submit="search(q)">
+    <nav class="action-bar">
+      <div class="row">
+        <div class="field five columns">
+          <input type="text" class="input" placeholder="find a place" ng-model="q" />
+        </div>
+        <div class="field two columns">
+          <input type="number" class="input" ng-model="zoom" />
+        </div>
+        <span class="two columns pretty medium info btn">
+          <input type="submit" value="Search" />
+        </span>
+        <a href="" ng-click="findMe()" class="pretty medium default btn two columns">
+          <span>Geolocate!</span>
+        </a>
+      </div>
+    </nav>
+  </form>
+
+  <form ng-submit="submit()" ng-controller="MapMarkersCtrl">
+    <div ng-if="currentMarker" class="map-marker-controls">
+      <div class="row">
+        <div class="field six columns">
+          <input type="text" class="input" ng-model="currentMarker.title" placeholder="marker title" />
+        </div>
+        <div class="btn default medium push_two two columns">
+          <a href="" ng-click="submit()">
+            Create
+          </a>
+        </div>
+        <div class="btn secondary medium two columns">
+          <a href="" ng-click="clearMarker()">
+            Cancel
+          </a>
+        </div>
+      </div>
+    </div>
+    <div google-map center="center" zoom="zoom" class="google-map" style="height:500px"></div>
+  </form>
+
+  <div class="map-entries">
+    <div ng-repeat="marker in markers" class="map-list-entry" ng-click="$parent.setCenter(marker)">
+      <h4>{{ marker.title }}</h4>
+      <div>latitude: <strong>{{ marker.latitude }}</strong></div>
+      <div>longitude: <strong>{{ marker.longitude }}</strong></div>
+      <a href="" ng-click="$parent.markers.remove(marker)" class="map-list-entry-remove">
+        <i class="icon-trash"></i>
+      </a>
+    </div>
+  </div>
+</div>

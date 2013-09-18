@@ -1,0 +1,22 @@
+<header>
+  <h2>Collection of Grids</h2>
+</header>
+<div ng-if="!grids.length">
+  You currently have no grids. <a href="#/grids/new">Click here to create one</a>.
+</div>
+<div ng-if="grids.length > 0">
+  <div ng-repeat="grid in grids track by grid.$id" class="list-result">
+    <h2><a href="#/grids/{{ grid.$id }}">{{ grid.title }}</a></h2>
+    <div class="row">
+      <div class="four columns">
+        <h5>Description / Summary</h5>
+        {{ grid.summary }}
+      </div>
+    </div>
+    <nav>
+      <div class="btn info medium">
+        <a href="#/grids/{{ grid.$id }}">View Grid</a>
+      </div>
+    </nav>
+  </div>
+</div>

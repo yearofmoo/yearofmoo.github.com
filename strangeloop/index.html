@@ -1,0 +1,40 @@
+<!DOCTYPE html> 
+<html ng-app="databus">
+<head>
+<title>-</title>
+<link rel="stylesheet" type="text/css" href="./components/gumby/css/gumby.css" />
+<link rel="stylesheet" type="text/css" href="./styles/layout.css" />
+<link rel="stylesheet" type="text/css" href="./styles/modules.css" />
+<link rel="stylesheet" type="text/css" href="./styles/animations.css" />
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="body" class="row">
+      <aside id="nav" ng-include="partial('/nav.html')"></aside>
+      <main id="stage">
+        <div id="view" ng-view></div>
+        <div id="bottom"></div>
+      </main>
+    </div>
+  </div>
+
+<script type="text/javascript" src="./components/jquery/jquery.js"></script>
+<script type="text/javascript" src="./lib/angular-1.2.0-rc.2/angular.js"></script>
+<script type="text/javascript" src="./lib/angular-1.2.0-rc.2/angular-route.js"></script>
+<script type="text/javascript" src="./lib/angular-1.2.0-rc.2/angular-animate.js"></script>
+<script type="text/javascript" src="./lib/angular-1.2.0-rc.2/angular-resource.js"></script>
+<script type="text/javascript" src="//cdn.firebase.com/v0/firebase.js"></script>
+<script src="//maps.googleapis.com/maps/api/js?sensor=false&language=en"></script>
+<script type="text/javascript" src="./components/angular-fire/angularFire.js"></script>
+<script type="text/javascript" src="./scripts/config.js"></script>
+<script type="text/javascript" src="./scripts/helpers.js"></script>
+<script type="text/javascript" src="./scripts/firebase.js"></script>
+<script type="text/javascript" src="./scripts/modules/homePages.js"></script>
+<script type="text/javascript" src="./scripts/modules/listPages.js"></script>
+<script type="text/javascript" src="./scripts/modules/gridPages.js"></script>
+<script type="text/javascript" src="./scripts/modules/mapPages.js"></script>
+<script type="text/javascript" src="./scripts/modules/nav.js"></script>
+<script type="text/javascript" src="./scripts/app.js"></script>
+</body>
+</html>

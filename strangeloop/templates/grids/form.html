@@ -1,0 +1,30 @@
+<form ng-submit="submit()" name="gridForm" class="styled-form row nine columns">
+    
+  <header>
+    <h2 ng-if="isNew">Create New Grid</h2>
+    <h2 ng-if="!isNew">Update Grid</h2>
+  </header>
+
+  <fieldset>
+    <legend>grid Info</legend> 
+    <ul class="row">
+      <li class="field six columns">
+        <label class="block">Title: </label>
+        <input type="text" class="text input" ng-model="grid.title" />
+      </li>
+    </ul>
+    <ul class="row">
+      <li class="field">
+        <label>Summary: </label>
+        <textarea class="input textarea" ng-model="grid.summary"></textarea>
+      </li>
+    </ul>
+  </fieldset>
+
+  <nav>
+    <div class="pretty medium info btn">
+      <input type="submit" value="submit" class="button" />
+    </div>
+  </nav>
+
+</form>

@@ -1,0 +1,49 @@
+<div class="row">
+  <header class="eight columns">
+    <h2>{{ grid.title }}</h2>
+    <div class="row">
+      <div class="six columns">
+        <h5>Description / Summary</h5>
+        {{ grid.summary }}
+      </div>
+      <div class="six columns">
+        <h5>Keywords</h5>
+        {{ grid.keywords }}
+      </div>
+    </div>
+  </header>
+
+  <nav class="item-actions four columns">
+    <a href="#/grids/{{ grid.$id }}/edit"><i class="icon-pencil"></i> Edit</a>
+    <a href="#" ng-click="destroy()"><i class="icon-trash"></i> Delete</a>
+  </nav>
+</div>
+
+<form class="grid-container" ng-controller="GridTableCtrl as table" ng-submit="save(); table.changed=false">
+  <nav class="action-bar">
+    <div class="row">
+      <a href="" ng-click="increaseRows()" class="pretty medium default btn two columns">
+        <span>Increase Rows</span>
+      </a>
+      <a href="" ng-click="increaseColumns()" class="pretty medium default btn two columns">
+        <span>Increase Columns</span>
+      </a>
+      
+      <div class="four columns">
+        <span class="pretty medium info btn">
+          <input type="submit" value="Save Settings" />
+        </span>
+      </div>
+    </div>
+  </nav>
+  <div class="grid-frame">
+    <table class="grid-table">
+      <tr ng-repeat="row in matrix" ng-class="{headings:$index==0, rows:$index>0}">
+        <td ng-repeat="cell in row">
+          <input type="text" ng-model="cell.content" ng-if="cell.y==0" class="input" ng-change="table.changed=true" />
+          <textarea ng-model="cell.content" ng-change="table.changed=true" ng-if="cell.y>0" class="input"></textarea>
+        </td>
+      </tr>
+    </table>
+  </div>
+</form>

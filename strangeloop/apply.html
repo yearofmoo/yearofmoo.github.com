@@ -1,0 +1,114 @@
+<!DOCTYPE html> 
+<html ng-app="myApp">
+<head>
+<style>
+.item {
+  cursor:pointer;
+  padding:10px;
+  background:#eee;
+  border:2px solid #999;
+  font-size:40px;
+}
+h2 {
+  border-top:2px solid #ddd;
+  padding-top:40px;
+  margin-top:40px;
+}
+
+body > h2:first-child {
+  padding-top:20px;
+  border:0;
+  margin:0;
+}
+</style>
+</head>
+<body>
+
+  <h2>Total Clicks on Screen (scope with $apply)</h2>
+  <div apply-example class="item">
+    I have been clicked:
+    <strong>{{ counter }}</strong>
+  </div>
+
+  <h2>Total Clicks on Screen (using $compile and $digest)</h2>
+  <div compile-example class="item"></div>
+
+  <h2>Total Clicks on Screen (template and $controller)</h2>
+  <div template-example class="item"></div>
+
+  <h2>Total Clicks on Screen (templateUrl and controller events)</h2>
+  <div template-url-example class="item"></div>
+
+<script type="text/ng-template" id="click-template">
+<div>I have been clicked: <strong>{{ clicks }}</strong></div>
+</script>
+<script type="text/javascript" src="./lib/angular-1.2.0-rc.2/angular.js"></script>
+<script type="text/javascript">
+angular.module('myApp', [])
+  .directive('applyExample', function() {
+    return function($scope, element, attrs) {
+      $scope.counter = 0;
+      element.bind('click', function() {
+        $scope.$apply(function() {
+          $scope.counter++;
+        });
+      });
+    }
+  })
+
+  .directive('compileExample', function($compile) {
+    return function($scope, element, attrs) {
+      $scope.num = 0;
+
+      var child = angular.element('<div>I have been clicked: <strong>{{ num }}</strong></div>');
+      element.html('');
+      element.append(child);
+      $compile(child)($scope);
+
+      element.bind('click', function() {
+        $scope.num++;
+        $scope.$digest();
+      });
+    }
+  })
+
+  .directive('templateExample', function() {
+    return {
+      controller : function($scope) {
+        $scope.total = 0;
+        $scope.click = function() {
+          $scope.total++;
+        };
+      },
+      template : '<div>I have been clicked: <strong>{{ total }}</strong></div>',
+      link : function($scope, element, attrs) {
+        element.bind('click', function() {
+          $scope.$apply(function() {
+            $scope.click();
+          });
+        });
+      }
+    };
+  })
+
+  .directive('templateUrlExample', function() {
+    return {
+      controller : function($scope) {
+        $scope.clicks = 0;
+        $scope.$on('click',function() {
+          $scope.clicks++;
+        });
+      },
+      templateUrl : 'click-template',
+      link : function($scope, element, attrs) {
+        element.bind('click', function() {
+          $scope.$apply(function() {
+            $scope.$emit('click');
+          });
+        });
+      }
+    };
+  });
+</script>
+</body>
+</html>
