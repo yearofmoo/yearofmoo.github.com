@@ -1,12 +1,3 @@
-- path: angularjs-testing-article/
-  repo: git://github.com/yearofmoo-articles/AngularJS-Testing-Article.git
-  keep: false
-- path: angularjs-seo-article/
-  repo: git://github.com/yearofmoo-articles/AngularJS-SEO-Article.git
-  keep: false
-- path: angularjs-animation-article/
-  repo: git://github.com/yearofmoo-articles/AngularJS-Animation-Article.git
-  keep: false
-- path: angularjs-2nd-animation-article/
-  repo: git://github.com/matsko/AngularJS-Second-Animation-Article.git
+- path: ngMidwayTester
+  repo: git://github.com/yearofmoo/ngMidwayTester.git
   keep: false
