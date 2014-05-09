@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+<style>
+html, body {
+  position:relative;
+  background:url(focus.png);
+}
+.main-form {
+  position:absolute;
+  right:0;
+  top:0;
+  background:white;
+  width:500px;
+  z-index:100;
+  padding:20px;
+  border-left:2px solid black;
+  min-height:100%;
+}
+.control-group {
+  margin-bottom:20px;
+}
+.error-messages.ng-active {
+  background:maroon;
+  color:white;
+  padding:5px;
+  border-radius:5px;
+  margin-top:15px;
+  position:relative;
+}
+.error-messages.ng-active:after {
+  position:absolute;
+  top:-10px;
+  content:"";
+  left:20px;
+  border-style:solid;
+  border-color:transparent transparent maroon;
+  border-width:5px;
+}
+.main-stage {
+  position:fixed;
+  left:0;
+  top:0;
+  bottom:0;
+  width:60%;
+  background:url(./angular-logo.png) no-repeat center center;
+  background-size:80%;
+}
+</style>
+<script type="text/ng-template" id="form-messages">
+  <div ng-message="required">This field cannot be blank</div>
+  <div ng-message="minlength">The value for this field is too short</div>
+  <div ng-message="maxlength">The value for this field is too long</div>
+  <div ng-message="email">You have entered an incorrect email value</div>
+  <div ng-message="pattern">You did not enter the value in the correct format</div>
+  <div ng-message="password-characters">
+    Your password must consist of alphabetical or numeric characters.
+    It must also contain at least one special character, a number as well as an uppercase letter.
+  </div>
+</script>
+</head>
+<body class="main-grid">
+
+  <div class="main-stage">
+  </div>
+
+  <form name="my_form" class="main-form container" ng-controller="FormCtrl" ng-submit="submit()" novalidate>
+    <div class="control-group">
+      <label for="input_first_name">Name:</label>
+      <div class="row">
+        <div class="col-md-6">
+          <input class="form-control" type="text" name="first_name" id="input_first_name" ng-model="data.first_name" required />
+          <div class="error-messages" ng-if="interacted(my_form.first_name)" ng-messages="my_form.first_name.$error" ng-messages-include="form-messages">
+            <div ng-message="required">You did not enter your first name</div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <input class="form-control" type="text" name="last_name" id="input_last_name" ng-model="data.last_name" required />
+          <div class="error-messages" ng-if="interacted(my_form.last_name)" ng-messages="my_form.last_name.$error" ng-messages-include="form-messages">
+            <div ng-message="required">You did not enter your last name</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="input_username">Choose your Username:</label>
+      <input class="form-control"
+             type="text"
+             name="username"
+             id="input_username"
+             ng-model="data.username"
+             ng-minlength="6"
+             ng-minlength="12"
+             fake-remote-record-validator="fakeUsernames"
+             required />
+      <div class="error-messages" ng-if="interacted(my_form.username)" ng-messages="my_form.username.$error" ng-messages-include="form-messages">
+        <div ng-message="required">You did not enter a username value</div>
+        <div ng-message="record-loading">Checking database...</div>
+        <div ng-message="record-taken">Sorry, but {{ $parent.data.username }} is already taken</div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="input_email_address">Email Address:</label>
+      <input class="form-control"
+             type="email"
+             name="email_address"
+             id="input_email_address"
+             ng-model="data.email_address"
+             fake-remote-record-validator="fakeEmails"
+             required />
+      <div class="error-messages" ng-if="interacted(my_form.email_address)" ng-messages="my_form.email_address.$error" ng-messages-include="form-messages">
+        <div ng-message="required">You did not enter an email address</div>
+        <div ng-message="record-loading">Checking database...</div>
+        <div ng-message="record-taken">Sorry, but {{ $parent.data.email_address }} is already taken</div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="input_password">Create a password:</label>
+      <input class="form-control"
+             type="password"
+             name="password"
+             id="input_password"
+             ng-model="data.password"
+             ng-minlength="6"
+             ng-maxlength="12"
+             password-characters-validator
+             required />
+      <div class="error-messages"
+           ng-if="interacted(my_form.password)"
+           ng-messages="my_form.password.$error"
+           ng-messages-include="form-messages"></div>
+    </div>
+
+    <div class="control-group">
+      <label for="input_password_confirm">Confirm your password:</label>
+      <input class="form-control"
+             type="password"
+             name="password_confirm"
+             id="input_password_confirm"
+             ng-model="data.password_confirm"
+             ng-minlength="6"
+             ng-maxlength="12"
+             password-characters-validator
+             match-validator="data.password"
+             required />
+      <div class="error-messages" ng-if="interacted(my_form.password_confirm)" ng-messages="my_form.password_confirm.$error" ng-messages-include="form-messages">
+        <div ng-message="match">This password does not match the password entered before</div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="input_dob">Birthday:</label>
+      <input class="form-control" type="date" name="dob" id="input_dob" ng-model="data.dob" required />
+      <div class="error-messages" ng-if="interacted(my_form.dob)" ng-messages="my_form.dob.$error" ng-messages-include="form-messages">
+        <div ng-message="required">Your birthday is either blank or has an incorrect value</div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="input_gender">Gender:</label>
+      <select class="form-control" name="gender" id="input_gender" ng-model="data.gender" ng-options="gender for gender in genders" required>
+      </select>
+      <div class="error-messages" ng-if="interacted(my_form.gender)" ng-messages="my_form.gender.$error" ng-messages-include="form-messages">
+        <div ng-message="required">Please select a gender</div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="input_phone">Phone Number:</label>
+      <input class="form-control"
+             type="text"
+             name="phone"
+             id="input_phone"
+             ng-model="data.phone"
+             ng-pattern="phoneNumberRegex"
+             required />
+      <div class="error-messages" ng-if="interacted(my_form.phone)" ng-messages="my_form.phone.$error" ng-messages-include="form-messages">
+        <div ng-message="required">You did not enter a phone number</div>
+        <div ng-message="pattern">Please enter your phone number in the format of: (XXX) YYY-ZZZZ</div>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="input_location">Location:</label>
+      <select class="form-control"
+              name="location"
+              id="input_location"
+              ng-model="data.location"
+              ng-options="location.code as location.name for location in locations"
+              required>
+      </select>
+      <div class="error-messages" ng-if="interacted(my_form.location)" ng-messages="my_form.location.$error" ng-messages-include="form-messages">
+        <div ng-message="required">Please select a location</div>
+      </div>
+    </div>
+
+    <input class="form-control" type="submit" />
+  <form>
+
+<script type="text/javascript" src="angular.js"></script>
+<script type="text/javascript" src="angular-messages.js"></script>
+<script type="text/javascript">
+angular.module('app', ['ngMessages'])
+  .controller('FormCtrl', function($scope, $http) {
+    $scope.genders = [
+      'Male',
+      'Female'
+    ];
+
+    $http.get('/locations.json').success(function(locations) {
+      $scope.locations = locations;
+    });
+
+    $scope.phoneNumberRegex = /\(\d{3}\) \d{3}-\d{4}/;
+
+    $scope.fakeUsernames = ['angular', 'username', 'user', 'john', 'eric', 'noob', 'ng'];
+    $scope.fakeEmails = [
+      'email@email.com',
+      'email@gmail.com',
+      'email@website.com',
+      'jon@gmail.com',
+      'fake@gmail.com',
+      'fake@email.com'
+    ];
+
+    $scope.submitted = false;
+    $scope.submit = function() {
+      $scope.submitted = true;
+    };
+    $scope.interacted = function(field) {
+      return $scope.submitted || field.$dirty;
+    };
+  })
+  .factory('fakeQueryService', function($timeout, $q) {
+    var FAKE_TIMEOUT = 2000;
+    return function(username, fakeInvalidData) {
+      var defer = $q.defer();
+      $timeout(function() {
+        fakeInvalidData.indexOf(username) == -1
+            ? defer.resolve()
+            : defer.reject();
+      }, FAKE_TIMEOUT);
+      return defer.promise;
+    }
+  })
+  .directive('fakeRemoteRecordValidator', ['$timeout', 'fakeQueryService', function($timeout, fakeQueryService) {
+    return {
+      require: 'ngModel',
+      link : function(scope, element, attrs, ngModel) {
+        var seedData = scope.$eval(attrs.fakeRemoteRecordValidator);
+        ngModel.$parsers.push(function(value) {
+          valid(false);
+          loading(true);
+          fakeQueryService(value, seedData).then(
+            function() {
+              valid(true);
+              loading(false);
+            },
+            function() {
+              valid(false);
+              loading(false);
+            }
+          );
+          return value;
+        });
+
+        function valid(bool) {
+          ngModel.$setValidity('record-taken', bool);
+        }
+
+        function loading(bool) {
+          ngModel.$setValidity('record-loading', !bool);
+        }
+      }
+    }
+  }])
+  .directive('matchValidator', function() {
+    return {
+      require: 'ngModel',
+      link : function(scope, element, attrs, ngModel) {
+        ngModel.$parsers.push(function(value) {
+          ngModel.$setValidity('match', value == scope.$eval(attrs.matchValidator));
+          return value;
+        });
+      }
+    }
+  })
+  .directive('passwordCharactersValidator', function() {
+    var PASSWORD_FORMATS = [
+      /[^\w\s]+/, //special characters
+      /[A-Z]+/, //uppercase letters
+      /\w+/, //other letters
+      /\d+/ //numbers
+    ];
+
+    return {
+      require: 'ngModel',
+      link : function(scope, element, attrs, ngModel) {
+        ngModel.$parsers.push(function(value) {
+          var status = true;
+          angular.forEach(PASSWORD_FORMATS, function(regex) {
+            status = status && regex.test(value);
+          });
+          ngModel.$setValidity('password-characters', status);
+          return value;
+        });
+      }
+    }
+  })
+</script>
+</body>
+</html>

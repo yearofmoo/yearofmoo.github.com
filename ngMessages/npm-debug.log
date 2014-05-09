@@ -1,0 +1,62 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'tidyhtml', '-g' ]
+2 info using npm@1.4.4
+3 info using node@v0.10.26
+4 verbose cache add [ 'tidyhtml', null ]
+5 verbose cache add name=undefined spec="tidyhtml" args=["tidyhtml",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'tidyhtml',
+6 verbose parsed url   path: 'tidyhtml',
+6 verbose parsed url   href: 'tidyhtml' }
+7 silly lockFile cc8d1693-tidyhtml tidyhtml
+8 verbose lock tidyhtml /Users/matias/.npm/cc8d1693-tidyhtml.lock
+9 silly lockFile cc8d1693-tidyhtml tidyhtml
+10 silly lockFile cc8d1693-tidyhtml tidyhtml
+11 verbose addNamed [ 'tidyhtml', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile eefdc4ed-tidyhtml tidyhtml@
+14 verbose lock tidyhtml@ /Users/matias/.npm/eefdc4ed-tidyhtml.lock
+15 silly addNameRange { name: 'tidyhtml', range: '*', hasData: false }
+16 verbose url raw tidyhtml
+17 verbose url resolving [ 'https://registry.npmjs.org/', './tidyhtml' ]
+18 verbose url resolved https://registry.npmjs.org/tidyhtml
+19 info trying registry request attempt 1 at 01:11:30
+20 http GET https://registry.npmjs.org/tidyhtml
+21 http 404 https://registry.npmjs.org/tidyhtml
+22 silly registry.get cb [ 404,
+22 silly registry.get   { date: 'Mon, 05 May 2014 05:11:30 GMT',
+22 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+22 silly registry.get     'content-type': 'application/json',
+22 silly registry.get     via: '1.1 varnish',
+22 silly registry.get     'cache-control': 'max-age=0',
+22 silly registry.get     'content-length': '52',
+22 silly registry.get     'accept-ranges': 'bytes',
+22 silly registry.get     age: '0',
+22 silly registry.get     'x-served-by': 'cache-v37-ASH, cache-jfk1025-JFK',
+22 silly registry.get     'x-cache': 'MISS, MISS',
+22 silly registry.get     'x-cache-hits': '0, 0',
+22 silly registry.get     'x-timer': 'S1399266690.174728632,VS0,VS2,VE98,VE102',
+22 silly registry.get     'keep-alive': 'timeout=10, max=50',
+22 silly registry.get     connection: 'Keep-Alive' } ]
+23 silly lockFile eefdc4ed-tidyhtml tidyhtml@
+24 silly lockFile eefdc4ed-tidyhtml tidyhtml@
+25 error 404 'tidyhtml' is not in the npm registry.
+25 error 404 You should bug the author to publish it
+25 error 404
+25 error 404 Note that you can also install from a
+25 error 404 tarball, folder, or http url, or git url.
+26 error System Darwin 13.1.0
+27 error command "node" "/usr/local/bin/npm" "install" "tidyhtml" "-g"
+28 error cwd /Users/matias/Sites/messages-demo
+29 error node -v v0.10.26
+30 error npm -v 1.4.4
+31 error code E404
+32 verbose exit [ 1, true ]
