@@ -211,7 +211,7 @@ angular.module('app', ['ngMessages'])
       'Female'
     ];
 
-    $http.get('/locations.json').success(function(locations) {
+    $http.get('./locations.json').success(function(locations) {
       $scope.locations = locations;
     });
 
